@@ -5,16 +5,30 @@
  *      Author: root
  */
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdio_ext.h>
 #include <ctype.h>
-#include "electrodomestico.h"
 #include "validaciones.h"
 #include "marca.h"
-#include "servicio.h"
+
+
+void hardcodearMarcas(Marca aMarcas[], int len){
+	//Marca: id -> descripcion -> isEmpty
+	Marca hardcode[] = {
+			{1, "Wirpool", 0},
+			{2, "Sony", 0},
+			{3, "Liliana", 0},
+			{4, "Gafa", 0},
+			{5, "Philips", 0}
+	};
+	for(int i = 0; i < len; i++){
+		aMarcas[i].id = hardcode[i].id;
+		strncpy(aMarcas[i].descripcion, hardcode[i].descripcion,sizeof(aMarcas[i].descripcion));
+		aMarcas[i].isEmpty = hardcode[i].isEmpty;
+	}
+}
 
 void imprimirMarcas(Marca aMarcas[], int marcasLen){
 	if(aMarcas != NULL && marcasLen > 0){

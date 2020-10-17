@@ -4,28 +4,34 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../src/cliente.c \
 ../src/electrodomestico.c \
 ../src/marca.c \
 ../src/menu.c \
 ../src/parcial_electrodomestico.c \
+../src/repa-elec.c \
 ../src/reparacion.c \
 ../src/servicio.c \
 ../src/validaciones.c 
 
 OBJS += \
+./src/cliente.o \
 ./src/electrodomestico.o \
 ./src/marca.o \
 ./src/menu.o \
 ./src/parcial_electrodomestico.o \
+./src/repa-elec.o \
 ./src/reparacion.o \
 ./src/servicio.o \
 ./src/validaciones.o 
 
 C_DEPS += \
+./src/cliente.d \
 ./src/electrodomestico.d \
 ./src/marca.d \
 ./src/menu.d \
 ./src/parcial_electrodomestico.d \
+./src/repa-elec.d \
 ./src/reparacion.d \
 ./src/servicio.d \
 ./src/validaciones.d 

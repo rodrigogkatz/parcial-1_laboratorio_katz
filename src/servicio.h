@@ -8,6 +8,7 @@ typedef struct {
 	int isEmpty;
 } Servicio;
 
+void hardcodearServicios(Servicio aServicios[], int len);
 void imprimirServicios(Servicio aServicios[], int serviciosLen);
 void imprimirServicio(Servicio servicio);
 int validarServicioID(Servicio aServicios[], int serviciosLen, int reparacionServicioID);

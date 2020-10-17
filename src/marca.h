@@ -7,7 +7,7 @@ typedef struct {
 	int isEmpty;
 } Marca;
 
-
+void hardcodearMarcas(Marca aMarcas[], int len);
 void imprimirMarcas(Marca aMarcas[], int marcasLen);
 void imprimirMarca(Marca marca);
 int validarMarcaID(Marca aMarcas[], int marcasLen, int electrodomesticoMarcaID);

@@ -11,11 +11,9 @@
 #include <stdio_ext.h>
 #include <ctype.h>
 #include "menu.h"
-#include "electrodomestico.h"
 #include "validaciones.h"
-#include "marca.h"
-#include "servicio.h"
-#include "reparacion.h"
+#include "electrodomestico.h"
+
 
 void inicializarElectrodomesticos(Electrodomestico* aElectrodomesticos, int electroLen) {
 	if( aElectrodomesticos != NULL && electroLen > 0){
@@ -64,10 +62,10 @@ int agregarElectrodomestico(Electrodomestico aElectrodomesticos[], int electroLe
 			aElectrodomesticos[posicion].modelo = modelo;
 			aElectrodomesticos[posicion].isEmpty = 0;
 			printf("\n\t\tElectrodomestico generado satisfactoriamente...");
-			printf("\n\t\t-> Legajo: %d", aElectrodomesticos[posicion].id);
-			printf("\n\t\t-> Nombre: %d", aElectrodomesticos[posicion].serie);
-			printf("\t\t-> Apellido: %d", aElectrodomesticos[posicion].idMarca);
-			printf("\t\t-> Sector: %d", aElectrodomesticos[posicion].modelo);
+			printf("\n\t\t-> ID Electrodomestico: %d", aElectrodomesticos[posicion].id);
+			printf("\n\t\t-> N° de Serie: %d", aElectrodomesticos[posicion].serie);
+			printf("\t\t-> ID de Marca: %d", aElectrodomesticos[posicion].idMarca);
+			printf("\t\t-> N° de Modelo: %d", aElectrodomesticos[posicion].modelo);
 			printf("\n\t\t-> Estado: %d", aElectrodomesticos[posicion].isEmpty);
 			toReturn = 0;
 		}
@@ -152,28 +150,14 @@ int modificarElectrodomestico(Electrodomestico aElectrodomesticos[], int electro
 	return toReturn;
 }
 
-int removeElectrodomestico(Electrodomestico aElectrodomesticos[], int electroLen, Reparacion aReparaciones[], int reparacionLen, Servicio aServicios[], int servicioLen, Marca aMarcas[], int marcaLen){
+int validarElectrodomesticoID(Electrodomestico aElectrodomesticos[], int electroLen, int reparacionServicioID){
 	int toReturn = -1;
-	int isElectroIDOkToDelete = -1;
-	int idElectroFound = -1;
-	if (aElectrodomesticos != NULL && aReparaciones != NULL && aServicios != NULL && aReparaciones != NULL && electroLen > 0 && reparacionLen > 0 && servicioLen > 0) {
-		isElectroIDOkToDelete = utn_getNumber(&isElectroIDOkToDelete, "\n\t\tIngrese el ID que desea eliminar: ", "\n\t\tERROR:\n\t\tEl ID ingresado es invalido", 1, electroLen);
-		isElectroIDOkToDelete > 0 ? idElectroFound = encontrarElectrodomesticoPorId(aElectrodomesticos, electroLen, isElectroIDOkToDelete) : printf("\n\t\tERROR\n\t\tEl electrodomestico seleccionado debe existir para poder ser eliminado");
-		if(idElectroFound > 0){
-			//printf("\n1) aElectrodomesticos[%d].isEmpty %d", idElectroFound, aElectrodomesticos[idElectroFound-1].isEmpty);
-			aElectrodomesticos[idElectroFound - 1].isEmpty = 1;
-			printf("\n\t\tElectrodomestico borrado: id %d -> serie %d -> marca %d",aElectrodomesticos[idElectroFound - 1].id, aElectrodomesticos[idElectroFound - 1].serie, aElectrodomesticos[idElectroFound - 1].idMarca);
-			//printf("\n2) aElectrodomesticos[%d].isEmpty %d", idElectroFound, aElectrodomesticos[idElectroFound-1].isEmpty);
-			/*for(int i = 0; i < reparacionLen; i++){
-				//printf(" aReparaciones[i].serie %d",  aReparaciones[i].serie);
-				if(aElectrodomesticos[idElectroFound - 1].serie == aReparaciones[i].serie){
-					//printf("\n1) aReparaciones[%d].isEmpty %d", i, aReparaciones[i].isEmpty);
-					aReparaciones[i].isEmpty = 1;
-					//printf("\n2) aReparaciones[%d].isEmpty %d", i, aReparaciones[i].isEmpty);
-					//imprimirElectrodomesticoConReparacionYServicio(aElectrodomesticos[idElectroFound - 1], aReparaciones[i], aServicios, servicioLen, aMarcas, marcaLen);
-					break;
-				}
-			}*/
+	if(aElectrodomesticos != NULL && electroLen > 0 && reparacionServicioID > 0 && reparacionServicioID < electroLen){
+		for(int i = 0; i < electroLen; i++){
+			if(aElectrodomesticos[i].id == reparacionServicioID){
+				toReturn = 0;
+				break;
+			}
 		}
 	}
 	return toReturn;
@@ -205,7 +189,7 @@ int listarElectrodomesticos(Electrodomestico  aElectrodomesticos[], int len){
 	int toReturn = -1;
 	int opcion = 1;
 	if( aElectrodomesticos != NULL && len > 0) {
-		utn_getNumber(&opcion, "\n\t\t1) ordenar por modelo\n\t\t2) ordenar por serie", "\n\t\tERROR:\n\t\tEl ID ingresado es invalido", 1, 2);
+		utn_getNumber(&opcion, "\n\t\t1) ordenar por modelo\n\t\t2) ordenar por serie\n\t\tOpcion: ", "\n\t\tERROR:\n\t\tEl ID ingresado es invalido", 1, 2);
 		int isSortOk = ordenarElectrodomesticos(aElectrodomesticos, len, 1);
 		if(isSortOk == 0){
 			for(int i = 0; i < len; i++){

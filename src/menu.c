@@ -20,9 +20,9 @@ int menuPrimario() {
 	printf("\n\t\t4. LISTAR ELECTRODOMESTICOS");
 	printf("\n\t\t5. LISTAR MARCAS");
 	printf("\n\t\t6. LISTAR SERVICIOS");
-	printf("\n\t\t7. ALTA REPARACION");
-	printf("\n\t\t8. LISTAR REPARACIONES");
-	//printf("\n\t\t4. INFORME ELECTRODOMESTICO");
+	printf("\n\t\t7. LISTAR CLIENTES");
+	printf("\n\t\t8. ALTA REPARACION");
+	printf("\n\t\t9. LISTAR REPARACIONES");
 	printf("\n\t\t0. SALIR");
 	printf("\n\t\t------------------------------------------------");
 	printf("\n\t\tOpción: ");

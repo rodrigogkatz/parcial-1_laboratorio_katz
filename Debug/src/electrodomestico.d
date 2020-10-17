@@ -1,8 +1,10 @@
 src/electrodomestico.o: ../src/electrodomestico.c ../src/menu.h \
- ../src/electrodomestico.h ../src/marca.h ../src/servicio.h \
- ../src/reparacion.h ../src/validaciones.h
+ ../src/validaciones.h ../src/electrodomestico.h ../src/marca.h \
+ ../src/servicio.h ../src/cliente.h ../src/reparacion.h
 
 ../src/menu.h:
+
+../src/validaciones.h:
 
 ../src/electrodomestico.h:
 
@@ -10,6 +12,6 @@ src/electrodomestico.o: ../src/electrodomestico.c ../src/menu.h \
 
 ../src/servicio.h:
 
-../src/reparacion.h:
+../src/cliente.h:
 
-../src/validaciones.h:
+../src/reparacion.h:

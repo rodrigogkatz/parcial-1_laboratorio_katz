@@ -9,10 +9,24 @@
 #include <string.h>
 #include <stdio_ext.h>
 #include <ctype.h>
-#include "electrodomestico.h"
 #include "validaciones.h"
-#include "marca.h"
 #include "servicio.h"
+
+
+void hardcodearServicios(Servicio aServicios[], int len){
+	Servicio hardcode[] = {
+			{1, "Garantia", 250, 0},
+			{2, "Mantenimiento", 500, 0},
+			{3, "Repuestos", 400, 0},
+			{4, "Refaccion", 600, 0}
+	};
+	for(int i = 0; i < len; i++){
+		aServicios[i].id = hardcode[i].id;
+		strncpy(aServicios[i].descripcion, hardcode[i].descripcion,sizeof(aServicios[i].descripcion));
+		aServicios[i].precio = hardcode[i].precio;
+		aServicios[i].isEmpty = hardcode[i].isEmpty;
+	}
+}
 
 void imprimirServicios(Servicio aServicios[], int serviciosLen){
 	if(aServicios != NULL && serviciosLen > 0){
