@@ -36,16 +36,16 @@ int agregarReparacion(Reparacion aReparaciones[], int reparacionesLen, int id, i
 			aReparaciones[posicion].id = id;
 			aReparaciones[posicion].serie = serie;
 			aReparaciones[posicion].idServicio = idServicio;
-			aReparaciones[posicion].idCliente = idServicio;
+			aReparaciones[posicion].idCliente = idCliente;
 			aReparaciones[posicion].fecha = fecha;
 			aReparaciones[posicion].isEmpty = 0;
 			printf("\n\t\tReparacion generada satisfactoriamente...");
-			printf("\n\t\t-> ID Reparacion: %d", aReparaciones[posicion].id);
+			/*printf("\n\t\t-> ID Reparacion: %d", aReparaciones[posicion].id);
 			printf("\n\t\t-> N° de Serie: %d", aReparaciones[posicion].serie);
 			printf("\n\t\t-> ID de Servicio: %d", aReparaciones[posicion].idServicio);
 			printf("\n\t\t-> ID de Cliente: %d", aReparaciones[posicion].idCliente);
 			printf("\n\t\t-> Fecha: %d/%d/%d", aReparaciones[posicion].fecha.dia, aReparaciones[posicion].fecha.mes, aReparaciones[posicion].fecha.anio);
-			printf("\n\t\t-> Estado: %d", aReparaciones[posicion].isEmpty);
+			printf("\n\t\t-> Estado: %d", aReparaciones[posicion].isEmpty);*/
 			toReturn = 0;
 		}
 	}
@@ -68,10 +68,10 @@ int isEmptyReparacion(Reparacion aReparacion[], int reparacionesLen, int *posici
 }
 
 
-void listarReparaciones(Reparacion aReparacion[], int len){
+void listarReparaciones(Reparacion aReparacion[], int reparacionesLen){
 	//int opcion = 1;
-	if( aReparacion != NULL && len > 0) {
-		for(int i = 0; i < len; i++){
+	if( aReparacion != NULL && reparacionesLen > 0) {
+		for(int i = 0; i < reparacionesLen; i++){
 			 if(aReparacion[i].isEmpty == 0) {
 				 imprimirReparacion(i, aReparacion[i].id, aReparacion[i].serie, aReparacion[i].idServicio, aReparacion[i].fecha);
 			 }

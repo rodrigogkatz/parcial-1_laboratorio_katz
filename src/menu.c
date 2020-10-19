@@ -36,9 +36,8 @@ int menuModificacionElectrodomesticos() {
 	printf("\n\t\t------------------------------------------------");
 	printf("\n\t\tMenu");
 	printf("\n\t\t1. Modificar Serie");
-	printf("\n\t\t2. Modificar ID Marca");
-	printf("\n\t\t3. Modificar Modelo");
-	printf("\n\t\t4. Salir");
+	printf("\n\t\t2. Modificar Modelo");
+	printf("\n\t\t3. Salir");
 	printf("\n\t\t------------------------------------------------");
 	printf("\n\t\tOpción: ");
 	__fpurge(stdin);
@@ -46,17 +45,3 @@ int menuModificacionElectrodomesticos() {
 	return option;
 }
 
-int menuModificacionReparacion(){
-	int option = 0;
-	printf("\n\t\t------------------------------------------------");
-	printf("\n\t\tMenu");
-	printf("\n\t\t1. Modificar Serie");
-	printf("\n\t\t2. Modificar ID Servicio");
-	printf("\n\t\t4. Modificar Fecha");
-	printf("\n\t\t5. Salir");
-	printf("\n\t\t------------------------------------------------");
-	printf("\n\t\tOpción: ");
-	__fpurge(stdin);
-	scanf("%i", &option);
-	return option;
-}

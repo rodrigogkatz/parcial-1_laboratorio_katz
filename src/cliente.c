@@ -45,7 +45,7 @@ void imprimirCliente(Cliente cliente){
 
 int validarClienteID(Cliente aClientes[], int clientesLen, int reparacionClienteID){
 	int toReturn = -1;
-		if(aClientes != NULL && clientesLen > 0 && reparacionClienteID > 0 && reparacionClienteID < clientesLen){
+		if(aClientes != NULL && clientesLen > 0 && reparacionClienteID > 0){
 			for(int i = 0; i < clientesLen; i++){
 				if(aClientes[i].id == reparacionClienteID){
 					toReturn = 0;

@@ -2,7 +2,7 @@
  ============================================================================
  Name        : parcial_electrodomestico.c
  Author      : Rodrigo Katz
- Version     :
+ Version     : 1.0.3
  Copyright   : © Copyright RGK
  Description : Hello World in C, Ansi-style
  ============================================================================
@@ -75,7 +75,7 @@ int main(void) {
 				imprimirClientes(aClientes, QTY_CLIENTES);
 				break;
 			case 8:
-				electrodomesticoAgregado == 0 ?reparacion = setReparacion(&idGenerator, &auxaReparacion, aElectrodomesticos, QTY_ELECTRODOMESTICOS, aServicios, QTY_SERVICIOS, aClientes, QTY_CLIENTES) : printf("\n\t\tERROR\n\t\tDebe agregar al menos un electrodomestico antes de agendar una reparacion");
+				electrodomesticoAgregado == 0 ? reparacion = setReparacion(&idGenerator, &auxaReparacion, aElectrodomesticos, QTY_ELECTRODOMESTICOS, aServicios, QTY_SERVICIOS, aClientes, QTY_CLIENTES) : printf("\n\t\tERROR\n\t\tDebe agregar al menos un electrodomestico antes de agendar una reparacion");
 				electrodomesticoAgregado == 0 && reparacion == 0 ? reparacionAgregadaOk = agregarReparacion(aReparaciones, QTY_REPARACIONES, auxaReparacion.id, auxaReparacion.serie, auxaReparacion.idServicio, auxaReparacion.idCliente, auxaReparacion.fecha) : printf("\n\t\tERROR\n\t\tNo se puede pactar una reparacion");
 				break;
 			case 9:

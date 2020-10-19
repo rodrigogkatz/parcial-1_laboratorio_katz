@@ -14,25 +14,25 @@
 #include "marca.h"
 
 
-void hardcodearMarcas(Marca aMarcas[], int len){
+void hardcodearMarcas(Marca aMarcas[], int marcaLen){
 	//Marca: id -> descripcion -> isEmpty
 	Marca hardcode[] = {
-			{1, "Wirpool", 0},
-			{2, "Sony", 0},
-			{3, "Liliana", 0},
-			{4, "Gafa", 0},
-			{5, "Philips", 0}
+			{1000, "Wirpool", 0},
+			{1001, "Sony", 0},
+			{1002, "Liliana", 0},
+			{1003, "Gafa", 0},
+			{1004, "Philips", 0}
 	};
-	for(int i = 0; i < len; i++){
+	for(int i = 0; i < marcaLen; i++){
 		aMarcas[i].id = hardcode[i].id;
 		strncpy(aMarcas[i].descripcion, hardcode[i].descripcion,sizeof(aMarcas[i].descripcion));
 		aMarcas[i].isEmpty = hardcode[i].isEmpty;
 	}
 }
 
-void imprimirMarcas(Marca aMarcas[], int marcasLen){
-	if(aMarcas != NULL && marcasLen > 0){
-		for (int i = 0; i < marcasLen; i++) {
+void imprimirMarcas(Marca aMarcas[], int marcaLen){
+	if(aMarcas != NULL && marcaLen > 0){
+		for (int i = 0; i < marcaLen; i++) {
 			imprimirMarca(aMarcas[i]);
 		}
 	}
@@ -45,10 +45,10 @@ void imprimirMarca(Marca marca){
 	}
 }
 
-int validarMarcaID(Marca aMarcas[], int marcasLen, int electrodomesticoMarcaID){
+int validarMarcaID(Marca aMarcas[], int marcaLen, int electrodomesticoMarcaID){
 	int toReturn = -1;
-	if(aMarcas != NULL && marcasLen > 0 && electrodomesticoMarcaID > 0 && electrodomesticoMarcaID < marcasLen){
-		for(int i = 0; i < marcasLen; i++){
+	if(aMarcas != NULL && marcaLen > 0 && electrodomesticoMarcaID > 0){
+		for(int i = 0; i < marcaLen; i++){
 			if(aMarcas[i].id == electrodomesticoMarcaID){
 				toReturn = 0;
 				break;
