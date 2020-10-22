@@ -23,6 +23,7 @@ int menuPrimario() {
 	printf("\n\t\t7. LISTAR CLIENTES");
 	printf("\n\t\t8. ALTA REPARACION");
 	printf("\n\t\t9. LISTAR REPARACIONES");
+	printf("\n\t\t10. INFORMES");
 	printf("\n\t\t0. SALIR");
 	printf("\n\t\t------------------------------------------------");
 	printf("\n\t\tOpción: ");
@@ -34,7 +35,7 @@ int menuPrimario() {
 int menuModificacionElectrodomesticos() {
 	int option = 0;
 	printf("\n\t\t------------------------------------------------");
-	printf("\n\t\tMenu");
+	printf("\n\t\tMenu de Electrodomesticos");
 	printf("\n\t\t1. Modificar Serie");
 	printf("\n\t\t2. Modificar Modelo");
 	printf("\n\t\t3. Salir");
@@ -45,3 +46,16 @@ int menuModificacionElectrodomesticos() {
 	return option;
 }
 
+int menuInformes(){
+	int option = 0;
+		printf("\n\t\t------------------------------------------------");
+		printf("\n\t\tMenu de Informes");
+		printf("\n\t\t1. Informe general");
+		printf("\n\t\t2. Informe Electrodomesticos por Descripcion de Marca");
+		printf("\n\t\t0. Salir");
+		printf("\n\t\t------------------------------------------------");
+		printf("\n\t\tOpción: ");
+		__fpurge(stdin);
+		scanf("%i", &option);
+		return option;
+}

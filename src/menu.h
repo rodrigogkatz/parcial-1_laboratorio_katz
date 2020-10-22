@@ -15,5 +15,12 @@ int menuPrimario();
  **/
 int menuModificacionElectrodomesticos();
 
+/**
+ * brief funcion que muestra el menu para acceder a distintos informes
+ * param no lleva parametro
+ * return opcion elegida
+ **/
+int menuInformes();
+
 
 #endif /* HEADERS_MENU_H_ */

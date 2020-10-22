@@ -6,6 +6,7 @@
 C_SRCS += \
 ../src/cliente.c \
 ../src/electrodomestico.c \
+../src/informes.c \
 ../src/marca.c \
 ../src/menu.c \
 ../src/parcial_electrodomestico.c \
@@ -17,6 +18,7 @@ C_SRCS += \
 OBJS += \
 ./src/cliente.o \
 ./src/electrodomestico.o \
+./src/informes.o \
 ./src/marca.o \
 ./src/menu.o \
 ./src/parcial_electrodomestico.o \
@@ -28,6 +30,7 @@ OBJS += \
 C_DEPS += \
 ./src/cliente.d \
 ./src/electrodomestico.d \
+./src/informes.d \
 ./src/marca.d \
 ./src/menu.d \
 ./src/parcial_electrodomestico.d \

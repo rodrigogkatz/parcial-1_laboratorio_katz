@@ -33,7 +33,7 @@ int setElectrodomestico(int *idGenerador, Electrodomestico *electrodomestico, Ma
 		printf("\n\t\tAlta Electrodomestico");
 		(*idGenerador)++;
 		electrodomestico->id = *idGenerador;
-		utn_getNumber(&electrodomestico->serie,"\n\t\tIngrese N° de Serie del electrodomestico: ", "\n\t\tError\n\t\tNumero de serie invalido", 1, 5000000);
+		utn_getNumber(&electrodomestico->serie,"\n\t\tIngrese N° de Serie del electrodomestico \n\t\t(Entre 1 y 99999999): ", "\n\t\tError\n\t\tNumero de serie invalido", 1, 99999999);
 		do {
 			imprimirMarcas(aMarcas, marcasLen);
 			utn_getNumber(&electrodomestico->idMarca, "\n\t\tIngrese ID de la marca: ", "\n\t\tError\n\t\tID invalido", 1000, 1004);
@@ -146,7 +146,7 @@ int validarElectrodomesticoSerieID(Electrodomestico aElectrodomesticos[], int el
 	if(aElectrodomesticos != NULL && electroLen > 0 && reparacionSerieID > 0){
 		for(int i = 0; i < electroLen; i++){
 			if(aElectrodomesticos[i].serie == reparacionSerieID){
-				printf("aElectrodomesticos[i].serie %d - reparacionServicioID %d", aElectrodomesticos[i].serie, reparacionSerieID);
+				//printf("aElectrodomesticos[i].serie %d - reparacionSerieID %d", aElectrodomesticos[i].serie, reparacionSerieID);
 				toReturn = 0;
 				break;
 			}

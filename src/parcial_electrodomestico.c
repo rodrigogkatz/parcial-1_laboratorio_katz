@@ -20,9 +20,10 @@
 #include "electrodomestico.h"
 #include "reparacion.h"
 #include "repa-elec.h"
+#include "informes.h"
 
-#define QTY_ELECTRODOMESTICOS 5
-#define QTY_REPARACIONES 5
+#define QTY_ELECTRODOMESTICOS 100000
+#define QTY_REPARACIONES 100000
 #define QTY_MARCAS 5
 #define QTY_SERVICIOS 4
 #define QTY_CLIENTES 4
@@ -35,7 +36,7 @@ int main(void) {
 	int reparacion = -1;
 	int reparacionAgregadaOk = -1;
 
-	Reparacion aReparaciones[QTY_REPARACIONES];
+	Reparacion aReparaciones [QTY_REPARACIONES];
 	Reparacion auxaReparacion;
 	Electrodomestico aElectrodomesticos[QTY_ELECTRODOMESTICOS];
 	Electrodomestico auxaElectrodomestico;
@@ -80,6 +81,9 @@ int main(void) {
 				break;
 			case 9:
 				electrodomesticoAgregado == 0 && reparacionAgregadaOk == 0 ? listarReparaciones(aReparaciones, QTY_REPARACIONES) : printf("\n\t\tERROR\n\t\tDebe agregar al menos una reparacion");;
+				break;
+			case 10:
+				electrodomesticoAgregado == 0 && reparacionAgregadaOk == 0 ? setInformes(aReparaciones, QTY_REPARACIONES,aElectrodomesticos, QTY_ELECTRODOMESTICOS, aServicios, QTY_SERVICIOS, aMarcas, QTY_MARCAS, aClientes, QTY_CLIENTES) : printf("\n\t\tERROR\n\t\tDebe haber Electrodomesticos y Reparaciones registradas");;
 				break;
 			case 0:
 				exit = 0;
