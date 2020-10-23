@@ -40,7 +40,7 @@ int setReparacion(int *idGenerador, Reparacion *reparacion, Electrodomestico *aE
 		(*idGenerador)++;
 		reparacion->id = *idGenerador;
 		do {
-			utn_getNumber(&reparacion->serie, "\n\t\tIngrese N° de Serie del electrodomestico: ", "\n\t\tError\n\t\tN° de serie invalido", 10000000, 99999999);
+			utn_getNumber(&reparacion->serie, "\n\t\tIngrese N° de Serie del electrodomestico: ", "\n\t\tError\n\t\tN° de serie invalido", 1, 99999999);
 		} while(validarElectrodomesticoSerieID(aElectrodomesticos, electroLen, reparacion->serie) == -1);
 		do {
 			imprimirServicios(aServicios, serviciosLen);

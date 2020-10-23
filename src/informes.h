@@ -16,6 +16,45 @@
 #include "reparacion.h"
 #include "informes.h"
 
+/**
+ * brief obtener iImporte Total Reparaciones Electrodomestico
+ * param Electrodomestico aElectrodomesticos array
+ * param int electroLen
+ * param Reparacion aReparaciones array
+ * param int reparacionesLen
+ * param Servicio aServicios array
+ * param int serviciosLen
+ * return 0 ok / -1 error
+ **/
+int obteneriImporteTotalReparacionesElectrodomestico(Electrodomestico aElectrodomesticos[], int electroLen, Reparacion aReparaciones[], int reparacionesLen, Servicio aServicios[], int serviciosLen);
+
+/**
+ * brief imrprime electros del año 2020
+ * param  param Electrodomestico aElectrodomesticos array
+ * param int electroLen
+ * return 0 ok / -1 error
+ **/
+int obtenerElectrodomesticosPorAnio(Electrodomestico aElectrodomesticos[], int electroLen);
+
+/**
+ * brief mostrar reparaciones de un electrodomestico
+ * param Electrodomestico aElectrodomesticos array
+ * param int electroLen
+ * param Reparacion aReparaciones array
+ * param int reparacionesLen
+ * return 0 ok / -1 error
+ **/
+int obtenerTodasLasReparacionesDeUnElectrodomestico(Electrodomestico aElectrodomesticos[], int electroLen, Reparacion aReparaciones[], int reparacionesLen);
+
+/**
+ * brief mostrar electrodomesticos sin reparaciones
+ * param Electrodomestico aElectrodomesticos array
+ * param int electroLen
+ * param Reparacion aReparaciones array
+ * param int reparacionesLen
+ * return 0 ok / -1 error
+ **/
+int obtenerElectrodomesticosSinReparaciones(Electrodomestico aElectrodomesticos[], int electroLen, Reparacion aReparaciones[], int reparacionesLen);
 
 /**
  * brief funcion para mostrar el menu de informes

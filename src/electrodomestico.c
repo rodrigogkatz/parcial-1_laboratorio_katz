@@ -110,7 +110,7 @@ int modificarElectrodomestico(Electrodomestico aElectrodomesticos[], int electro
 				switch (menuModificacionElectrodomesticos()) {
 				case 1:
 					mostrarNumerosDeSerieDisponibles(aElectrodomesticos,electroLen);
-					isSerieOk =  utn_getNumber(&auxSerie,"\n\t\tIngrese n° de serie: ", "\n\t\tError\n\t\tNumero de serie invalido", 1, 5000000);
+					isSerieOk =  utn_getNumber(&auxSerie,"\n\t\tIngrese n° de serie: ", "\n\t\tError\n\t\tNumero de serie invalido", 1, 99999999);
 					if(isSerieOk > 0){
 						printf("\n\t\tElectrodomestico ID %d", aElectrodomesticos[idElectroFound - 1].id);
 						printf("\n\t\tModificando Nro Serie %d", aElectrodomesticos[idElectroFound - 1].serie);
@@ -270,7 +270,7 @@ void mostrarIDsDisponibles(Electrodomestico  aElectrodomesticos[], int electroLe
 	if( aElectrodomesticos != NULL && electroLen > 0) {
 		for(int i = 0; i < electroLen; i++){
 			if(aElectrodomesticos[i].id > 0){
-				printf("\n\t\tElectrodomestico ID %d esta disponible para ser modificado", aElectrodomesticos[i].id);
+				printf("\n\t\tElectrodomestico ID %d esta disponible", aElectrodomesticos[i].id);
 			}
 		}
 	}

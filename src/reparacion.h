@@ -74,6 +74,6 @@ void listarReparaciones(Reparacion aReparacion[], int reparacionesLen);
  * param int *posicion
  * return no retorna
  **/
-void imprimirReparacion(int index, int id, int serie, int idServicio, Fecha fecha);
+void imprimirReparacion(int index, int id, int serie, int idServicio, int idCliente, Fecha fecha);
 
 #endif /* REPARACION_H_ */

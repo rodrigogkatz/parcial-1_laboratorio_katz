@@ -73,12 +73,12 @@ void listarReparaciones(Reparacion aReparacion[], int reparacionesLen){
 	if( aReparacion != NULL && reparacionesLen > 0) {
 		for(int i = 0; i < reparacionesLen; i++){
 			 if(aReparacion[i].isEmpty == 0) {
-				 imprimirReparacion(i, aReparacion[i].id, aReparacion[i].serie, aReparacion[i].idServicio, aReparacion[i].fecha);
+				 imprimirReparacion(i, aReparacion[i].id, aReparacion[i].serie, aReparacion[i].idServicio,aReparacion[i].idCliente, aReparacion[i].fecha);
 			 }
 		}
 	}
 }
 
-void imprimirReparacion(int index, int id, int serie, int idServicio, Fecha fecha) {
-	printf("\n\t\tElectrodomestico : id %d -> serie %d -> idServicio %d -> fecha %d/%d/%d",id, serie, idServicio, fecha.dia, fecha.mes, fecha.anio);
+void imprimirReparacion(int index, int id, int serie, int idServicio, int idCliente, Fecha fecha) {
+	printf("\n\t\tReparacion: id %d -> serie %d -> idServicio %d -> idCliente %d -> fecha %d/%d/%d",id, serie, idServicio, idCliente ,fecha.dia, fecha.mes, fecha.anio);
 }

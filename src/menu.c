@@ -50,8 +50,11 @@ int menuInformes(){
 	int option = 0;
 		printf("\n\t\t------------------------------------------------");
 		printf("\n\t\tMenu de Informes");
-		printf("\n\t\t1. Informe general");
+		printf("\n\t\t1. Electrodomesticos del año 2020");
 		printf("\n\t\t2. Informe Electrodomesticos por Descripcion de Marca");
+		printf("\n\t\t3. Reparaciones de un electrodomestico");
+		printf("\n\t\t4. Listar los Electrodomésticos que no tuvieron reparaciones");
+		printf("\n\t\t5. Importe total de  reparaciones realizadas a un Electrodoméstico");
 		printf("\n\t\t0. Salir");
 		printf("\n\t\t------------------------------------------------");
 		printf("\n\t\tOpción: ");

@@ -25,14 +25,23 @@ int setInformes(Reparacion aReparaciones[], int reparacionesLen, Electrodomestic
 		do{
 			switch (menuInformes()) {
 				case 1:
-					informeGeneral(aReparaciones,reparacionesLen,aElectrodomesticos,electroLen,aServicios,serviciosLen,aMarcas,marcasLen,aClientes,clientesLen);
+					obtenerElectrodomesticosPorAnio(aElectrodomesticos, electroLen);
 					break;
 				case 2:
-					//cuantos electrodomesticos hay para determinada marca
-					//informeGeneralPorReparacionID();
 					obtenerElectrodomesticosPorMarca(aElectrodomesticos,electroLen,aMarcas,marcasLen);
 					break;
-
+				case 3:
+					obtenerTodasLasReparacionesDeUnElectrodomestico(aElectrodomesticos,electroLen,aReparaciones, reparacionesLen);
+					break;
+				case 4:
+					obtenerElectrodomesticosSinReparaciones(aElectrodomesticos,electroLen,aReparaciones, reparacionesLen);
+					break;
+				case 5:
+					obteneriImporteTotalReparacionesElectrodomestico(aElectrodomesticos,electroLen,aReparaciones, reparacionesLen, aServicios, serviciosLen);
+					break;
+				/*case 200:
+				 * //informeGeneral(aReparaciones,reparacionesLen,aElectrodomesticos,electroLen,aServicios,serviciosLen,aMarcas,marcasLen,aClientes,clientesLen);
+					break;*/
 				case 0:
 					exit = 0;
 					break;
@@ -91,6 +100,7 @@ void informeGeneral(Reparacion aReparaciones[], int reparacionesLen, Electrodome
 	}
 }
 
+
 int obtenerIdElectrodomestico(Electrodomestico aElectrodomesticos[], int electroLen, int reparacionesSerieID, int *auxIdElectro){
 	int toReturn = -1;
 	if(aElectrodomesticos != NULL && electroLen > 0 && reparacionesSerieID > 0 && auxIdElectro != NULL){
@@ -137,7 +147,92 @@ int obtenerMarcaElectrodomestico(Electrodomestico aElectrodomesticos[], int elec
 	}
 	return toReturn;
 }
-//TODO
+
+int obtenerElectrodomesticosSinReparaciones(Electrodomestico aElectrodomesticos[], int electroLen, Reparacion aReparaciones[], int reparacionesLen){
+	int toReturn = -1;
+	if(aElectrodomesticos != NULL && electroLen > 0 && aReparaciones != NULL && reparacionesLen > 0){
+		for (int i = 0; i < electroLen; i++) {
+				if (aElectrodomesticos[i].isEmpty == 0) {
+					for (int j = 0; j < reparacionesLen; j++) {
+						if (aReparaciones[j].serie != aElectrodomesticos[i].serie) {
+							imprimirElectrodomestico(i, aElectrodomesticos[i].id , aElectrodomesticos[i].serie, aElectrodomesticos[i].idMarca, aElectrodomesticos[i].modelo);
+							toReturn = 0;
+							break;
+						}
+					}
+				}
+			}
+		}
+	return toReturn;
+}
+
+int obteneriImporteTotalReparacionesElectrodomestico(Electrodomestico aElectrodomesticos[], int electroLen, Reparacion aReparaciones[], int reparacionesLen, Servicio aServicios[], int serviciosLen){
+	int toReturn = -1;
+	int isId;
+	int sumatoria = 0;
+	if(aElectrodomesticos != NULL && electroLen > 0 && aReparaciones != NULL && reparacionesLen > 0){
+		mostrarIDsDisponibles(aElectrodomesticos,electroLen);
+		utn_getNumber(&isId, "\n\t\tIngrese el ID del electrodomestico que desea calcular: ", "\n\t\tERROR:\n\t\tEl id ingresado es invalido", 1, electroLen);
+		for (int i = 0; i < electroLen; i++) {
+				if (aElectrodomesticos[i].isEmpty == 0) {
+					for (int j = 0; j < reparacionesLen; j++) {
+						if (aReparaciones[j].serie == aElectrodomesticos[i].serie &&  aElectrodomesticos[i].id == isId) {
+
+							for (int k = 0; k < serviciosLen; k++) {
+								if (aReparaciones[j].idServicio == aServicios[k].id) {
+									sumatoria = sumatoria + aServicios[k].precio;
+								}
+							}
+							toReturn = 0;
+							break;
+						}
+					}
+				}
+			}
+			if(sumatoria > 0){
+				printf("\n\t\tEl mporte total de las reparaciones del Electrodomestico son: $ARG%d.-", sumatoria);
+			} else {
+				printf("\n\t\tEl electrodomestico no tiene reparaciones registradas");
+			}
+		}
+	return toReturn;
+}
+
+int obtenerTodasLasReparacionesDeUnElectrodomestico(Electrodomestico aElectrodomesticos[], int electroLen, Reparacion aReparaciones[], int reparacionesLen){
+	int toReturn = -1;
+	int isIDOk;
+	if(aElectrodomesticos != NULL && electroLen > 0 && aReparaciones != NULL && reparacionesLen > 0){
+		mostrarIDsDisponibles(aElectrodomesticos,electroLen);
+		utn_getNumber(&isIDOk, "\n\t\tIngrese el ID del electrodomestico que desea: ", "\n\t\tERROR:\n\t\tEl id ingresado es invalido", 1, electroLen);
+		for (int i = 0; i < electroLen; i++) {
+				if (aElectrodomesticos[i].isEmpty == 0) {
+					for (int j = 0; j < reparacionesLen; j++) {
+						if (aReparaciones[j].serie == aElectrodomesticos[i].serie &&  aElectrodomesticos[i].id == isIDOk) {
+							imprimirReparacion(j, aReparaciones[j].id , aReparaciones[j].serie, aReparaciones[j].idServicio, aReparaciones[j].idCliente, aReparaciones[j].fecha);
+							toReturn = 0;
+							break;
+						}
+					}
+				}
+			}
+		}
+	return toReturn;
+}
+
+int obtenerElectrodomesticosPorAnio(Electrodomestico aElectrodomesticos[], int electroLen){
+	int toReturn = -1;
+	if(aElectrodomesticos != NULL && electroLen > 0){
+		for (int i = 0; i < electroLen; i++) {
+				if (aElectrodomesticos[i].isEmpty == 0 && aElectrodomesticos[i].modelo == 2020) {
+					imprimirElectrodomestico(i, aElectrodomesticos[i].id , aElectrodomesticos[i].serie, aElectrodomesticos[i].idMarca, aElectrodomesticos[i].modelo);
+					toReturn = 0;
+					break;
+				}
+			}
+		}
+	return toReturn;
+}
+
 int  obtenerElectrodomesticosPorMarca(Electrodomestico aElectrodomesticos[], int electroLen, Marca aMarcas[], int marcasLen){
 	int toReturn = -1;
 	char name[51];
@@ -147,11 +242,8 @@ int  obtenerElectrodomesticosPorMarca(Electrodomestico aElectrodomesticos[], int
 		imprimirMarcas(aMarcas, marcasLen);
 		printf ("\n\t\tIngrese la descripcion de alguna marca sugerida: ");
 		scanf ("%50s",name);
-		//utn_getString(name, "\n\t\tIngrese una marca: ", "\n\t\tLa marca debe tener entre 2 y 50 caracteres.\n\t\tIntente nuevamente: ", 2, 50);
 		for (int i = 0; i < marcasLen; i++) {
-			//printf("\n aMarcas[i].descripcion %s VS name %s", aMarcas[i].descripcion, name);
 			if (strcmp(aMarcas[i].descripcion, name) == 0) {
-				//printf("\n iteracion sobre electrodomesticos con n° serie %d", reparacionSerieID);
 				for (int j = 0; j < electroLen; j++) {
 					if (aElectrodomesticos[j].idMarca == aMarcas[i].id) {
 						matches++;
@@ -161,9 +253,7 @@ int  obtenerElectrodomesticosPorMarca(Electrodomestico aElectrodomesticos[], int
 					}
 				}
 			}
-
 		}
-
 		if(matches > 0){
 			printf ("\n\t\tSe encontraron %d electrodomesticos por marca", matches);
 		} else {
